@@ -1,0 +1,49 @@
+{
+  "_Dice-CGTer5xJ.js": {
+    "file": "assets/Dice-CGTer5xJ.js",
+    "name": "Dice",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "index.html": {
+    "file": "assets/index-DiPidACy.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "dynamicImports": [
+      "node_modules/@3d-dice/dice-box/dist/world.offscreen.js",
+      "node_modules/@3d-dice/dice-box/dist/world.onscreen.js",
+      "node_modules/@3d-dice/dice-box/dist/world.none.js"
+    ],
+    "css": [
+      "assets/index-BU3x8UoA.css"
+    ]
+  },
+  "node_modules/@3d-dice/dice-box/dist/world.none.js": {
+    "file": "assets/world.none-Co6UPis-.js",
+    "name": "world.none",
+    "src": "node_modules/@3d-dice/dice-box/dist/world.none.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Dice-CGTer5xJ.js",
+      "index.html"
+    ]
+  },
+  "node_modules/@3d-dice/dice-box/dist/world.offscreen.js": {
+    "file": "assets/world.offscreen-C5e_o3iU.js",
+    "name": "world.offscreen",
+    "src": "node_modules/@3d-dice/dice-box/dist/world.offscreen.js",
+    "isDynamicEntry": true
+  },
+  "node_modules/@3d-dice/dice-box/dist/world.onscreen.js": {
+    "file": "assets/world.onscreen-CbW4luRW.js",
+    "name": "world.onscreen",
+    "src": "node_modules/@3d-dice/dice-box/dist/world.onscreen.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Dice-CGTer5xJ.js",
+      "index.html"
+    ]
+  }
+}
