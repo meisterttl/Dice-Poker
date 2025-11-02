@@ -2,7 +2,7 @@ import DiceBox from "@3d-dice/dice-box";
 
 const Dice = new DiceBox({
   id: "dice-canvas",
-  assetPath: "/src/assets/",
+  assetPath: "/assets/",
   friction: 1,
   restitution: 0.6,
   angularDamping: 0.6,
