@@ -1,39 +1,34 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import "./styles/styles.css";
-import Game from "./js/Game.js";
-import Bot from "./js/Bot.js";
+import Game from "./js/Game";
+import Bot from "./js/Bot";
 import Dice from "./Dice";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Loader from "./components/Loader";
 import GameplayPrompt from "./GameplayPrompt";
+import Loader from "./components/Loader";
 
 const player = new Game("player");
 const cpu = new Bot("cpu");
 
 const Canvas = ({ isDiceRolling }) => {
-  const canvasClassName = isDiceRolling ? "" : "background";
-
   useEffect(() => {
     document.querySelector("#canvas").append(Dice.canvas);
   }, []);
 
-  return <div id="canvas" className={canvasClassName}></div>;
+  return <div id="canvas" className={isDiceRolling ? "" : "background"}></div>;
 };
 
 const Gameplay = ({ gameStarted }) => {
   const [isDiceRolling, setIsDiceRolling] = useState(false);
+
   // Due to player/cpu classes, it's not ideal to declare as state variables
   // So user data and stats are separated
-  const users = {
-    player: player,
-    cpu: cpu,
-  };
+  const users = { player: player, cpu: cpu };
 
   return (
     <>
       <Canvas isDiceRolling={isDiceRolling} />
+
       {gameStarted && (
         <GameplayPrompt
           users={users}
@@ -50,10 +45,12 @@ const Menu = ({ handlePlay }) => {
     <div className="menu">
       <div className="menu-main">
         <h1>Dice Poker</h1>
+
         <div className="menu-main__elements">
           <button id="play" onClick={handlePlay}>
             Play
           </button>
+
           {/* <button
             id="instruction"
             onClick={() => {
@@ -69,7 +66,7 @@ const Menu = ({ handlePlay }) => {
   );
 };
 
-const Main = () => {
+function App() {
   const [loading, setLoading] = useState(true);
   const [gameStarted, setGameStarted] = useState(false);
   const initialized = useRef(false);
@@ -121,18 +118,9 @@ const Main = () => {
   return (
     <main>
       {loading ? <Loader /> : !gameStarted && <Menu handlePlay={handlePlay} />}
+
       <Gameplay gameStarted={gameStarted} />
     </main>
-  );
-};
-
-function App() {
-  return (
-    <>
-      <Header />
-      <Main />
-      <Footer />
-    </>
   );
 }
 

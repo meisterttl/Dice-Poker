@@ -15,6 +15,7 @@ const GameplayResult = ({
 }) => {
   const [whoWon, setWhoWon] = useState(null);
   const userTurns = structuredClone(userStats);
+
   // There's probably a better way to do this but this will make player's hand display at the bottom. Since userData contain each user's data according to their turn order, creating a new array will not disturb the turn order.
   const totalPlayer = userTurns.length;
   if ("player" === userStats[0].name) {
@@ -24,15 +25,14 @@ const GameplayResult = ({
 
   useEffect(() => {
     if (3 === round) {
-      let message;
       userTurns.sort((a, b) => b.score - a.score);
 
-      if (userTurns[0].score === userTurns[1].score) {
-        message = "It's a tie!";
-      } else {
-        message =
-          "player" === userTurns[0].name ? "You win! 😆" : "You lose! 🥲";
-      }
+      const message =
+        userTurns[0].score === userTurns[1].score
+          ? "It's a tie!"
+          : "player" === userTurns[0].name
+            ? "You win! 😆"
+            : "You lose! 🥲";
 
       setWhoWon(message);
     }

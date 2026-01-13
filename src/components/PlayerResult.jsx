@@ -1,6 +1,6 @@
 import { useState } from "react";
-import DieColours from "../DieColours";
 import DiceResult from "./DiceResult";
+import { DieColours } from "../constants";
 
 const PlayerResult = ({
   setIsDiceRolling,
@@ -81,9 +81,8 @@ const PlayerResult = ({
     <div className="gameplay-result">
       <h2>{user.name}'s hand</h2>
       <div className="gameplay-result__elements">
-        <p className="lead">
-          {user.hand} ({user.score})
-        </p>
+        <p className="lead">{user.hand}</p>
+
         {warning ? (
           <p className="warning">Are you keeping your hand?</p>
         ) : (
@@ -91,6 +90,7 @@ const PlayerResult = ({
             <p>Choose which dice to keep!</p>
           )
         )}
+
         {0 !== keeps.length && (
           <DiceResult
             results={keeps}
@@ -101,6 +101,7 @@ const PlayerResult = ({
       </div>
       <div className="gameplay-result__elements">
         {0 !== rerolls.length && <p>You're rerolling these!</p>}
+
         {0 !== rerolls.length && (
           <DiceResult
             results={rerolls}
@@ -114,6 +115,7 @@ const PlayerResult = ({
           <button id="reroll" onClick={handleReroll}>
             Reroll
           </button>
+
           <button id="keep" onClick={handleHappyHand}>
             I'm happy with my hand!
           </button>
@@ -122,6 +124,7 @@ const PlayerResult = ({
       {whoWon && (
         <>
           <p className="lead">{whoWon}</p>
+
           <div className="gameplay-extra">
             <button id="replay" onClick={handleReplay}>
               Play Again!

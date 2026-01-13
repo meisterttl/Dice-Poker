@@ -1,4 +1,4 @@
-const DieColours = [
+export const DieColours = [
   {
     hex: "#142777",
     name: "dark-blue",
@@ -16,5 +16,3 @@ const DieColours = [
     name: "dark-red",
   },
 ];
-
-export default DieColours;

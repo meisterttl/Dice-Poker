@@ -1,5 +1,5 @@
-import DieColours from "../DieColours";
 import DiceResult from "./DiceResult";
+import { DieColours } from "../constants";
 
 const UserResult = ({ user }) => {
   // cpu has already separated rerolls from its results
@@ -12,10 +12,10 @@ const UserResult = ({ user }) => {
   return (
     <div className="gameplay-result">
       <h2>{user.name}'s hand</h2>
+
       <div className="gameplay-result__elements">
-        <p className="lead">
-          {user.hand} ({user.score})
-        </p>
+        <p className="lead">{user.hand}</p>
+
         <DiceResult results={results} colour={colour} handleClick={null} />
       </div>
     </div>

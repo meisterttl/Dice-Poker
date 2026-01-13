@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import Dice from "./Dice";
 import GameplayResult from "./GameplayResult";
 import DieFace from "./components/DieFace";
-import DieColours from "./DieColours";
 import Loader from "./components/Loader";
+import { DieColours } from "./constants";
 import * as Helper from "./js/Helper";
 
 const GameplayIntro = ({ users, setUserStats, setIsDiceRolling, setRound }) => {
@@ -32,6 +32,7 @@ const GameplayIntro = ({ users, setUserStats, setIsDiceRolling, setRound }) => {
   return (
     <div className="gameplay-intro">
       <h2>Choose your colour!</h2>
+
       <div className="gameplay-intro__elements">
         {DieColours.map((colour, index) => (
           <DieFace
@@ -42,6 +43,7 @@ const GameplayIntro = ({ users, setUserStats, setIsDiceRolling, setRound }) => {
           />
         ))}
       </div>
+
       <p className="lead">Then let's find out who goes first!</p>
     </div>
   );
@@ -89,12 +91,14 @@ const GameplayMain = ({
           playerSkipped={playerSkipped}
         />
       )}
+
       {3 !== round && playerSkipped && (
         <>
           <p className="lead">Computer is thinking...</p>
           <Loader />
         </>
       )}
+
       {((1 <= round && !playerSkipped) || 3 === round) && (
         <GameplayResult
           users={users}
